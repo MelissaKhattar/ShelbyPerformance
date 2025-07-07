@@ -28,7 +28,8 @@
             margin-bottom: 1.5rem;
         }
         .header {
-            background-color: #1A3661;
+            /* Changed to a blue color for Localyser branding */
+            background-color: #1A3661; /* Tailwind blue-500 */
             color: white;
             padding: 1.5rem;
             border-radius: 12px 12px 0 0;
@@ -70,12 +71,31 @@
         .metric-value {
             font-size: 2.25rem; /* text-4xl */
             font-weight: 700; /* font-bold */
-            color: #4f46e5; /* indigo-600 */
+            /* Changed to a blue color for Localyser branding */
+            color: #3B82F6; /* Tailwind blue-500 */
         }
         .metric-label {
             font-size: 0.875rem; /* text-sm */
             color: #64748b; /* slate-500 */
             margin-top: 0.5rem;
+        }
+        .insight-card {
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f8fafc;
+        }
+        .insight-card.positive {
+            border-color: #10b981;
+            background-color: #ecfdf5;
+        }
+        .insight-card.negative {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        .insight-card.neutral {
+            border-color: #fbbf24;
+            background-color: #fffbeb;
         }
     </style>
 </head>
@@ -117,7 +137,7 @@
         <!-- Key Highlights / Lowlights -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div class="card p-6 rounded-xl">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Performance Highlights</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Performance Highlights (Jan - Jun 2025)</h2>
                 <ul class="list-disc list-inside text-gray-700 space-y-2">
                     <li><span class="font-medium">Biggest Rating Increase:</span> <span class="sentiment-positive">Shelby's Shawarma-Richmond Hill (+0.3)</span></li>
                     <li><span class="font-medium">Most New Reviews:</span> <span class="text-blue-600">Shelby's Shawarma-McLeod (1691)</span></li>
@@ -126,13 +146,38 @@
                 </ul>
             </div>
             <div class="card p-6 rounded-xl">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Performance Lowlights</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Performance Lowlights (Jan - Jun 2025)</h2>
                 <ul class="list-disc list-inside text-gray-700 space-y-2">
                     <li><span class="font-medium">Biggest Rating Drop:</span> <span class="sentiment-negative">Shelby's Shawarma-Nepean (-0.3)</span></li>
                     <li><span class="font-medium">Most Negative Category (Price):</span> <span class="sentiment-negative">86.40% Negative</span></li>
                     <li><span class="font-medium">Most Negative Secondary (Delivery Accuracy):</span> <span class="sentiment-negative">260 Negative Mentions</span></li>
                     <li><span class="font-medium">Critical Trend:</span> <span class="sentiment-negative">Delivery Accuracy consistently negative (-66 to -100)</span></li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- Actionable Insights & Recommendations -->
+        <div class="card p-6 rounded-xl mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Actionable Insights & Recommendations</h2>
+            
+            <h3 class="text-lg font-semibold text-gray-700 mb-3 mt-5">Top Performing Locations (Rating Increase, Jan - Jun 2025) 🎉</h3>
+            <div id="topPerformingLocations" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Top performing locations will be populated here -->
+            </div>
+
+            <h3 class="text-lg font-semibold text-gray-700 mb-3 mt-5">Highest Localyser Feedback Locations (June 2025) 📈</h3>
+            <div id="highestLocalyserFeedbackLocations" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Highest Localyser Feedback locations will be populated here -->
+            </div>
+
+            <h3 class="text-lg font-semibold text-gray-700 mb-3 mt-5">Excellent Response Rate Locations (June 2025) ✅</h3>
+            <div id="excellentResponseRateLocations" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Excellent Response Rate locations will be populated here -->
+            </div>
+
+            <h3 class="text-lg font-semibold text-gray-700 mb-3 mt-5">Areas for Improvement ⚠️</h3>
+            <div id="areasForImprovement" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Areas for improvement will be populated here -->
             </div>
         </div>
 
@@ -194,6 +239,7 @@
                             <th>Avg. Response Time (days)</th>
                             <th>Positive Response Rate (%)</th>
                             <th>Negative Response Rate (%)</th>
+                            <th>Localyser Feedback Reviews (June)</th> <!-- Updated Column Header -->
                         </tr>
                     </thead>
                     <tbody>
@@ -250,34 +296,57 @@
             { "Location": "Bloor & Bathurst", "Platform": "Google", "Before Date": "January 2025", "Before Rating": 4.8, "Before Reviews": 1459, "After Date": "June 28 2025", "After Rating": 4.7, "After Reviews": 2033, "Feedback used": "Yes", "Rating Change": -0.1, "Review Count Change": 574, "Analysis": "Strong Drop in Rating" },
             { "Location": "Bloor West Village", "Platform": "Google", "Before Date": "January 2025", "Before Rating": 4.7, "Before Reviews": 998, "After Date": "June 28 2025", "After Rating": 4.7, "After Reviews": 1308, "Feedback used": "Yes", "Rating Change": 0, "Review Count Change": 310, "Analysis": "More Reviews, Same Rating" },
             { "Location": "Montpelier", "Platform": "Google", "Before Date": "January 2025", "Before Rating": 4.5, "Before Reviews": 955, "After Date": "June 28 2025", "After Rating": 4.5, "After Reviews": 1378, "Feedback used": "Yes", "Rating Change": 0, "Review Count Change": 423, "Analysis": "More Reviews, Same Rating" },
-            { "Location": "Hwy #7", "Platform": "Google", "Before Date": "January 2025", "Before Rating": 4.7, "Before Reviews": 810, "After Date": "June 28 2025", "After Rating": 4.7, "After Reviews": 1507, "Feedback used": "Yes", "Rating Change": 0, "Review Count Change": 697, "Analysis": "More Reviews, Same Rating" },
+            { "Location": "Hwy #7", "Platform": "Google", "Before Date": "January 2025", "Before Rating": 4.7, "Before Reviews": 810, "After Date": "June 28 2025", "After Rating": 4.7, "After Reviews": 1507, "Feedback used": "Yes", "Rating Change": 0, "Review Count Change": 697, "Analysis": "More Reviews, Same Rating" }
+        ];
+
+        // This data needs to be declared at the top level of the script
+        const responseRateData = [
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Downtown", "Rating": 4.62, "Reviews": 229, "Positive": 5, "Neutral": 17, "Negative": 251, "Total Reviews": 283, "Responses Positive": 65, "Responses Neutral": 28, "Responses Negative": 0, "Responses Total": 12, "Response Rate Positive": 26, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 1, "Response Time Positive": 1, "Response Time Neutral": 0, "Response Time Negative": 1, "Response Time Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Oakville", "Rating": 4.25, "Reviews": 226, "Positive": 14, "Neutral": 43, "Negative": 283, "Total Reviews": 283, "Responses Positive": 98, "Responses Neutral": 32, "Responses Negative": 36, "Responses Total": 49, "Response Rate Positive": 35, "Response Rate Neutral": 2, "Response Rate Negative": 2, "Response Rate Total": 1, "Response Time Positive": 2, "Response Time Neutral": 2, "Response Time Negative": 1, "Response Time Total": 2 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Upper James", "Rating": 4.34, "Reviews": 238, "Positive": 10, "Neutral": 40, "Negative": 288, "Total Reviews": 288, "Responses Positive": 73, "Responses Neutral": 22, "Responses Negative": 20, "Responses Total": 45, "Response Rate Positive": 25, "Response Rate Neutral": 4, "Response Rate Negative": 3, "Response Rate Total": 3 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "White Oaks", "Rating": 4.08, "Reviews": 88, "Positive": 5, "Neutral": 25, "Negative": 118, "Total Reviews": 118, "Responses Positive": 44, "Responses Neutral": 34, "Responses Negative": 20, "Responses Total": 52, "Response Rate Positive": 37, "Response Rate Neutral": 2, "Response Rate Negative": 0, "Response Rate Total": 2 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Talbot Village", "Rating": 4.87, "Reviews": 64, "Positive": 2, "Neutral": 1, "Negative": 67, "Total Reviews": 67, "Responses Positive": 28, "Responses Neutral": 42, "Responses Negative": 50, "Responses Total": 0, "Response Rate Positive": 42, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "MasonVille", "Rating": 4.37, "Reviews": 97, "Positive": 3, "Neutral": 15, "Negative": 115, "Total Reviews": 115, "Responses Positive": 22, "Responses Neutral": 21, "Responses Negative": 0, "Responses Total": 13, "Response Rate Positive": 19, "Response Rate Neutral": 2, "Response Rate Negative": 0, "Response Rate Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Highbury", "Rating": 4.52, "Reviews": 308, "Positive": 14, "Neutral": 29, "Negative": 351, "Total Reviews": 351, "Responses Positive": 76, "Responses Neutral": 23, "Responses Negative": 14, "Responses Total": 10, "Response Rate Positive": 22, "Response Rate Neutral": 0, "Response Rate Negative": 1, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Oakridge", "Rating": 4.27, "Reviews": 79, "Positive": 5, "Neutral": 15, "Negative": 99, "Total Reviews": 99, "Responses Positive": 18, "Responses Neutral": 20, "Responses Negative": 40, "Responses Total": 0, "Response Rate Positive": 18, "Response Rate Neutral": 2, "Response Rate Negative": 5, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "West Five", "Rating": 4.45, "Reviews": 39, "Positive": 0, "Neutral": 5, "Negative": 44, "Total Reviews": 44, "Responses Positive": 13, "Responses Neutral": 31, "Responses Negative": 0, "Responses Total": 20, "Response Rate Positive": 30, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "St Thomas", "Rating": 4.65, "Reviews": 59, "Positive": 2, "Neutral": 2, "Negative": 63, "Total Reviews": 63, "Responses Positive": 25, "Responses Neutral": 39, "Responses Negative": 50, "Responses Total": 50, "Response Rate Positive": 40, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Strathroy", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Hespeler", "Rating": 4.64, "Reviews": 352, "Positive": 7, "Neutral": 26, "Negative": 385, "Total Reviews": 385, "Responses Positive": 175, "Responses Neutral": 48, "Responses Negative": 0, "Responses Total": 23, "Response Rate Positive": 45, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Windsor", "Rating": 4.43, "Reviews": 275, "Positive": 16, "Neutral": 28, "Negative": 319, "Total Reviews": 319, "Responses Positive": 98, "Responses Neutral": 29, "Responses Negative": 38, "Responses Total": 39, "Response Rate Positive": 31, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Rexdale", "Rating": 4.26, "Reviews": 281, "Positive": 19, "Neutral": 51, "Negative": 351, "Total Reviews": 351, "Responses Positive": 136, "Responses Neutral": 41, "Responses Negative": 26, "Responses Total": 33, "Response Rate Positive": 39, "Response Rate Neutral": 2, "Response Rate Negative": 1, "Response Rate Total": 2 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Queen & Spadina", "Rating": 4.59, "Reviews": 275, "Positive": 11, "Neutral": 24, "Negative": 310, "Total Reviews": 310, "Responses Positive": 120, "Responses Neutral": 40, "Responses Negative": 27, "Responses Total": 29, "Response Rate Positive": 39, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Bloor & Bathurst", "Rating": 4.22, "Reviews": 286, "Positive": 21, "Neutral": 56, "Negative": 363, "Total Reviews": 363, "Responses Positive": 109, "Responses Neutral": 30, "Responses Negative": 24, "Responses Total": 34, "Response Rate Positive": 30, "Response Rate Neutral": 2, "Response Rate Negative": 2, "Response Rate Total": 2 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Bloor West Village", "Rating": 4.46, "Reviews": 274, "Positive": 15, "Neutral": 33, "Negative": 322, "Total Reviews": 322, "Responses Positive": 31, "Responses Neutral": 10, "Responses Negative": 13, "Responses Total": 6, "Response Rate Positive": 10, "Response Rate Neutral": 2, "Response Rate Negative": 1, "Response Rate Total": 2 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Montpelier", "Rating": 4.27, "Reviews": 308, "Positive": 20, "Neutral": 55, "Negative": 383, "Total Reviews": 383, "Responses Positive": 134, "Responses Neutral": 35, "Responses Negative": 20, "Responses Total": 42, "Response Rate Positive": 35, "Response Rate Neutral": 1, "Response Rate Negative": 1, "Response Rate Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Hwy #7", "Rating": 4.59, "Reviews": 302, "Positive": 14, "Neutral": 20, "Negative": 336, "Total Reviews": 336, "Responses Positive": 122, "Responses Neutral": 36, "Responses Negative": 57, "Responses Total": 25, "Response Rate Positive": 36, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
             { "Location Title": "St.Catharines", "Location ID": "St.Catharines", "Rating": 4.68, "Reviews": 523, "Positive": 10, "Neutral": 30, "Negative": 563, "Total Reviews": 563, "Responses Positive": 315, "Responses Neutral": 59, "Responses Negative": 10, "Responses Total": 23, "Response Rate Positive": 56, "Response Rate Neutral": 1, "Response Rate Negative": 3, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "McLeod", "Rating": 4.63, "Reviews": 672, "Positive": 23, "Neutral": 44, "Negative": 739, "Total Reviews": 739, "Responses Positive": 546, "Responses Neutral": 76, "Responses Negative": 39, "Responses Total": 59, "Response Rate Positive": 74, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Clearbrook", "Rating": 4.71, "Reviews": 362, "Positive": 12, "Neutral": 17, "Negative": 391, "Total Reviews": 391, "Responses Positive": 139, "Responses Neutral": 37, "Responses Negative": 8, "Responses Total": 18, "Response Rate Positive": 36, "Response Rate Neutral": 1, "Response Rate Negative": 1, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Sarnia", "Rating": 4.62, "Reviews": 148, "Positive": 6, "Neutral": 8, "Negative": 162, "Total Reviews": 162, "Responses Positive": 54, "Responses Neutral": 31, "Responses Negative": 33, "Responses Total": 75, "Response Rate Positive": 33, "Response Rate Neutral": 2, "Response Rate Negative": 1, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Burlington", "Rating": 4.49, "Reviews": 212, "Positive": 8, "Neutral": 28, "Negative": 248, "Total Reviews": 248, "Responses Positive": 65, "Responses Neutral": 28, "Responses Negative": 13, "Responses Total": 14, "Response Rate Positive": 26, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Head Office", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Lawrence", "Rating": 4.48, "Reviews": 423, "Positive": 19, "Neutral": 44, "Negative": 486, "Total Reviews": 486, "Responses Positive": 408, "Responses Neutral": 86, "Responses Negative": 68, "Responses Total": 75, "Response Rate Positive": 84, "Response Rate Neutral": 2, "Response Rate Negative": 2, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "King & John", "Rating": 4.18, "Reviews": 208, "Positive": 17, "Neutral": 44, "Negative": 269, "Total Reviews": 269, "Responses Positive": 64, "Responses Neutral": 26, "Responses Negative": 24, "Responses Total": 11, "Response Rate Positive": 24, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "McMaster", "Rating": 4.59, "Reviews": 172, "Positive": 7, "Neutral": 13, "Negative": 192, "Total Reviews": 192, "Responses Positive": 180, "Responses Neutral": 94, "Responses Negative": 100, "Responses Total": 92, "Response Rate Positive": 94, "Response Rate Neutral": 3, "Response Rate Negative": 1, "Response Rate Total": 3 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Ajax", "Rating": 4.32, "Reviews": 220, "Positive": 12, "Neutral": 36, "Negative": 268, "Total Reviews": 268, "Responses Positive": 34, "Responses Neutral": 11, "Responses Negative": 17, "Responses Total": 22, "Response Rate Positive": 13, "Response Rate Neutral": 3, "Response Rate Negative": 7, "Response Rate Total": 6 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "ErinMills", "Rating": 4.11, "Reviews": 240, "Positive": 17, "Neutral": 60, "Negative": 317, "Total Reviews": 317, "Responses Positive": 113, "Responses Neutral": 36, "Responses Negative": 59, "Responses Total": 28, "Response Rate Positive": 36, "Response Rate Neutral": 2, "Response Rate Negative": 3, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Kingston", "Rating": 4.62, "Reviews": 244, "Positive": 8, "Neutral": 19, "Negative": 271, "Total Reviews": 271, "Responses Positive": 236, "Responses Neutral": 88, "Responses Negative": 100, "Responses Total": 74, "Response Rate Positive": 87, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Peterborough", "Rating": 4.62, "Reviews": 190, "Positive": 0, "Neutral": 16, "Negative": 206, "Total Reviews": 206, "Responses Positive": 140, "Responses Neutral": 68, "Responses Negative": 0, "Responses Total": 63, "Response Rate Positive": 68, "Response Rate Neutral": 2, "Response Rate Negative": 0, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Waterloo", "Rating": 4.12, "Reviews": 268, "Positive": 13, "Neutral": 65, "Negative": 346, "Total Reviews": 346, "Responses Positive": 322, "Responses Neutral": 93, "Responses Negative": 92, "Responses Total": 92, "Response Rate Positive": 93, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Richmond Hill", "Rating": 4.62, "Reviews": 353, "Positive": 11, "Neutral": 29, "Negative": 393, "Total Reviews": 393, "Responses Positive": 386, "Responses Neutral": 98, "Responses Negative": 100, "Responses Total": 98, "Response Rate Positive": 98, "Response Rate Neutral": 1, "Response Rate Negative": 3, "Response Rate Total": 2 },
+            { "Location Title": "McLeod", "Location ID": "McLeod", "Rating": 4.63, "Reviews": 672, "Positive": 23, "Neutral": 44, "Negative": 739, "Total Reviews": 739, "Responses Positive": 546, "Responses Neutral": 76, "Responses Negative": 39, "Responses Total": 59, "Response Rate Positive": 74, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
+            { "Location Title": "Clearbrook", "Location ID": "Clearbrook", "Rating": 4.71, "Reviews": 362, "Positive": 12, "Neutral": 17, "Negative": 391, "Total Reviews": 391, "Responses Positive": 139, "Responses Neutral": 37, "Responses Negative": 8, "Responses Total": 18, "Response Rate Positive": 36, "Response Rate Neutral": 1, "Response Rate Negative": 1, "Response Rate Total": 1 },
+            { "Location Title": "Sarnia", "Location ID": "Sarnia", "Rating": 4.62, "Reviews": 148, "Positive": 6, "Neutral": 8, "Negative": 162, "Total Reviews": 162, "Responses Positive": 54, "Responses Neutral": 31, "Responses Negative": 33, "Responses Total": 75, "Response Rate Positive": 33, "Response Rate Neutral": 2, "Response Rate Negative": 1, "Response Rate Total": 2 },
+            { "Location Title": "Burlington", "Location ID": "Burlington", "Rating": 4.49, "Reviews": 212, "Positive": 8, "Neutral": 28, "Negative": 248, "Total Reviews": 248, "Responses Positive": 65, "Responses Neutral": 28, "Responses Negative": 13, "Responses Total": 14, "Response Rate Positive": 26, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
+            { "Location Title": "Head Office", "Location ID": "Head Office", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Lawrence", "Location ID": "Lawrence", "Rating": 4.48, "Reviews": 423, "Positive": 19, "Neutral": 44, "Negative": 486, "Total Reviews": 486, "Responses Positive": 408, "Responses Neutral": 86, "Responses Negative": 68, "Responses Total": 75, "Response Rate Positive": 84, "Response Rate Neutral": 2, "Response Rate Negative": 2, "Response Rate Total": 2 },
+            { "Location Title": "King & John", "Location ID": "King & John", "Rating": 4.18, "Reviews": 208, "Positive": 17, "Neutral": 44, "Negative": 269, "Total Reviews": 269, "Responses Positive": 64, "Responses Neutral": 26, "Responses Negative": 24, "Responses Total": 11, "Response Rate Positive": 24, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 0 },
+            { "Location Title": "McMaster", "Location ID": "McMaster", "Rating": 4.59, "Reviews": 172, "Positive": 7, "Neutral": 13, "Negative": 192, "Total Reviews": 192, "Responses Positive": 180, "Responses Neutral": 94, "Responses Negative": 100, "Responses Total": 92, "Response Rate Positive": 94, "Response Rate Neutral": 3, "Response Rate Negative": 1, "Response Rate Total": 3 },
+            { "Location Title": "Ajax", "Location ID": "Ajax", "Rating": 4.32, "Reviews": 220, "Positive": 12, "Neutral": 36, "Negative": 268, "Total Reviews": 268, "Responses Positive": 34, "Responses Neutral": 11, "Responses Negative": 17, "Responses Total": 22, "Response Rate Positive": 13, "Response Rate Neutral": 3, "Response Rate Negative": 7, "Response Rate Total": 6 },
+            { "Location Title": "ErinMills", "Location ID": "ErinMills", "Rating": 4.11, "Reviews": 240, "Positive": 17, "Neutral": 60, "Negative": 317, "Total Reviews": 317, "Responses Positive": 113, "Responses Neutral": 36, "Responses Negative": 59, "Responses Total": 28, "Response Rate Positive": 36, "Response Rate Neutral": 2, "Response Rate Negative": 3, "Response Rate Total": 2 },
+            { "Location Title": "Kingston", "Location ID": "Kingston", "Rating": 4.62, "Reviews": 244, "Positive": 8, "Neutral": 19, "Negative": 271, "Total Reviews": 271, "Responses Positive": 236, "Responses Neutral": 88, "Responses Negative": 100, "Responses Total": 74, "Response Rate Positive": 87, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 1 },
+            { "Location Title": "Peterborough", "Location ID": "Peterborough", "Rating": 4.62, "Reviews": 190, "Positive": 0, "Neutral": 16, "Negative": 206, "Total Reviews": 206, "Responses Positive": 140, "Responses Neutral": 68, "Responses Negative": 0, "Responses Total": 63, "Response Rate Positive": 68, "Response Rate Neutral": 2, "Response Rate Negative": 0, "Response Rate Total": 2 },
+            { "Location Title": "Waterloo", "Location ID": "Waterloo", "Rating": 4.12, "Reviews": 268, "Positive": 13, "Neutral": 65, "Negative": 346, "Total Reviews": 346, "Responses Positive": 322, "Responses Neutral": 93, "Responses Negative": 92, "Responses Total": 92, "Response Rate Positive": 93, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Richmond Hill", "Location ID": "Richmond Hill", "Rating": 4.62, "Reviews": 353, "Positive": 11, "Neutral": 29, "Negative": 393, "Total Reviews": 393, "Responses Positive": 386, "Responses Neutral": 98, "Responses Negative": 100, "Responses Total": 98, "Response Rate Positive": 98, "Response Rate Neutral": 1, "Response Rate Negative": 3, "Response Rate Total": 2 },
             { "Location Title": "Abbas Smoothies", "Location ID": "Richmond St", "Rating": 5, "Reviews": 20, "Positive": 0, "Neutral": 0, "Negative": 20, "Total Reviews": 20, "Responses Positive": 3, "Responses Neutral": 15, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 15, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Woodbridge", "Rating": 4.7, "Reviews": 292, "Positive": 6, "Neutral": 18, "Negative": 316, "Total Reviews": 316, "Responses Positive": 279, "Responses Neutral": 89, "Responses Negative": 83, "Responses Total": 78, "Response Rate Positive": 88, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "West hill", "Rating": 4.5, "Reviews": 214, "Positive": 10, "Neutral": 20, "Negative": 244, "Total Reviews": 244, "Responses Positive": 226, "Responses Neutral": 92, "Responses Negative": 100, "Responses Total": 95, "Response Rate Positive": 93, "Response Rate Neutral": 1, "Response Rate Negative": 1, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Dundas Square", "Rating": 4.37, "Reviews": 335, "Positive": 14, "Neutral": 52, "Negative": 401, "Total Reviews": 401, "Responses Positive": 138, "Responses Neutral": 35, "Responses Negative": 7, "Responses Total": 40, "Response Rate Positive": 34, "Response Rate Neutral": 1, "Response Rate Negative": 5, "Response Rate Total": 2 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Bramalea", "Rating": 4.53, "Reviews": 483, "Positive": 15, "Neutral": 48, "Negative": 546, "Total Reviews": 546, "Responses Positive": 238, "Responses Neutral": 45, "Responses Negative": 33, "Responses Total": 35, "Response Rate Positive": 44, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Pearson Airport", "Rating": 4.47, "Reviews": 309, "Positive": 14, "Neutral": 37, "Negative": 360, "Total Reviews": 360, "Responses Positive": 166, "Responses Neutral": 50, "Responses Negative": 7, "Responses Total": 27, "Response Rate Positive": 46, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Nepean", "Rating": 4.71, "Reviews": 913, "Positive": 17, "Neutral": 59, "Negative": 989, "Total Reviews": 989, "Responses Positive": 434, "Responses Neutral": 47, "Responses Negative": 6, "Responses Total": 12, "Response Rate Positive": 44, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Kanata", "Rating": 4.46, "Reviews": 515, "Positive": 9, "Neutral": 72, "Negative": 596, "Total Reviews": 596, "Responses Positive": 283, "Responses Neutral": 47, "Responses Negative": 22, "Responses Total": 54, "Response Rate Positive": 47, "Response Rate Neutral": 0, "Response Rate Negative": 6, "Response Rate Total": 1 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Sudbury", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Kitchener", "Rating": 4.83, "Reviews": 181, "Positive": 2, "Neutral": 6, "Negative": 189, "Total Reviews": 189, "Responses Positive": 147, "Responses Neutral": 78, "Responses Negative": 100, "Responses Total": 67, "Response Rate Positive": 78, "Response Rate Neutral": 6, "Response Rate Negative": 6, "Response Rate Total": 6 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Newmarket", "Rating": 4.71, "Reviews": 228, "Positive": 1, "Neutral": 17, "Negative": 246, "Total Reviews": 246, "Responses Positive": 237, "Responses Neutral": 96, "Responses Negative": 100, "Responses Total": 94, "Response Rate Positive": 96, "Response Rate Neutral": 3, "Response Rate Negative": 1, "Response Rate Total": 3 },
-            { "Location Title": "Shelby's Shawarma", "Location ID": "Guelph", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 } // Added Guelph
+            { "Location Title": "Woodbridge", "Location ID": "Woodbridge", "Rating": 4.7, "Reviews": 292, "Positive": 6, "Neutral": 18, "Negative": 316, "Total Reviews": 316, "Responses Positive": 279, "Responses Neutral": 89, "Responses Negative": 83, "Responses Total": 78, "Response Rate Positive": 88, "Response Rate Neutral": 1, "Response Rate Negative": 2, "Response Rate Total": 2 },
+            { "Location Title": "West hill", "Location ID": "West hill", "Rating": 4.5, "Reviews": 214, "Positive": 10, "Neutral": 20, "Negative": 244, "Total Reviews": 244, "Responses Positive": 226, "Responses Neutral": 92, "Responses Negative": 100, "Responses Total": 95, "Response Rate Positive": 93, "Response Rate Neutral": 1, "Response Rate Negative": 1, "Response Rate Total": 1 },
+            { "Location Title": "Dundas Square", "Location ID": "Dundas Square", "Rating": 4.37, "Reviews": 335, "Positive": 14, "Neutral": 52, "Negative": 401, "Total Reviews": 401, "Responses Positive": 138, "Responses Neutral": 35, "Responses Negative": 7, "Responses Total": 40, "Response Rate Positive": 34, "Response Rate Neutral": 1, "Response Rate Negative": 5, "Response Rate Total": 2 },
+            { "Location Title": "Bramalea", "Location ID": "Bramalea", "Rating": 4.53, "Reviews": 483, "Positive": 15, "Neutral": 48, "Negative": 546, "Total Reviews": 546, "Responses Positive": 238, "Responses Neutral": 45, "Responses Negative": 33, "Responses Total": 35, "Response Rate Positive": 44, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Pearson Airport", "Location ID": "Pearson Airport", "Rating": 4.47, "Reviews": 309, "Positive": 14, "Neutral": 37, "Negative": 360, "Total Reviews": 360, "Responses Positive": 166, "Responses Neutral": 50, "Responses Negative": 7, "Responses Total": 27, "Response Rate Positive": 46, "Response Rate Neutral": 1, "Response Rate Negative": 0, "Response Rate Total": 1 },
+            { "Location Title": "Nepean", "Location ID": "Nepean", "Rating": 4.71, "Reviews": 913, "Positive": 17, "Neutral": 59, "Negative": 989, "Total Reviews": 989, "Responses Positive": 434, "Responses Neutral": 47, "Responses Negative": 6, "Responses Total": 12, "Response Rate Positive": 44, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 1 },
+            { "Location Title": "Kanata", "Location ID": "Kanata", "Rating": 4.46, "Reviews": 515, "Positive": 9, "Neutral": 72, "Negative": 596, "Total Reviews": 596, "Responses Positive": 283, "Responses Neutral": 47, "Responses Negative": 22, "Responses Total": 54, "Response Rate Positive": 47, "Response Rate Neutral": 0, "Response Rate Negative": 6, "Response Rate Total": 1 },
+            { "Location Title": "Sudbury", "Location ID": "Sudbury", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 },
+            { "Location Title": "Kitchener", "Location ID": "Kitchener", "Rating": 4.83, "Reviews": 181, "Positive": 2, "Neutral": 6, "Negative": 189, "Total Reviews": 189, "Responses Positive": 147, "Responses Neutral": 78, "Responses Negative": 100, "Responses Total": 67, "Response Rate Positive": 78, "Response Rate Neutral": 6, "Response Rate Negative": 6, "Response Rate Total": 6 },
+            { "Location Title": "Newmarket", "Location ID": "Newmarket", "Rating": 4.71, "Reviews": 228, "Positive": 1, "Neutral": 17, "Negative": 246, "Total Reviews": 246, "Responses Positive": 237, "Responses Neutral": 96, "Responses Negative": 100, "Responses Total": 94, "Response Rate Positive": 96, "Response Rate Neutral": 3, "Response Rate Negative": 1, "Response Rate Total": 3 },
+            { "Location Title": "Guelph", "Location ID": "Guelph", "Rating": 0, "Reviews": 0, "Positive": 0, "Neutral": 0, "Negative": 0, "Total Reviews": 0, "Responses Positive": 0, "Responses Neutral": 0, "Responses Negative": 0, "Responses Total": 0, "Response Rate Positive": 0, "Response Rate Neutral": 0, "Response Rate Negative": 0, "Response Rate Total": 0 } // Added Guelph
         ];
 
         // New, corrected response time data provided by the user
@@ -330,6 +399,69 @@
             "Guelph": { "Response Rate Total": 0, "Response Time Total": 0 }
         };
 
+        const trendChartData = [
+            { "Name": "AtmosphereCleanliness", "01-07 Jun": 72, "08-14 Jun": 78, "15-21 Jun": 74, "22-28 Jun": 76, "29 Jun-05 Jul": 58, "06-12 Jul": 62 },
+            { "Name": "AtmosphereEmotion", "01-07 Jun": 100, "08-14 Jun": 100, "15-21 Jun": 70, "22-28 Jun": 90, "29 Jun-05 Jul": 84, "06-12 Jul": 100 },
+            { "Name": "DeliveryAccuracy", "01-07 Jun": -66, "08-14 Jun": -100, "15-21 Jun": -92, "22-28 Jun": -96, "29 Jun-05 Jul": -98, "06-12 Jul": -100 },
+            { "Name": "DeliveryPackaging", "01-07 Jun": 82, "08-14 Jun": 82, "15-21 Jun": 76, "22-28 Jun": 76, "29 Jun-05 Jul": 76, "06-12 Jul": 0 },
+            { "Name": "DeliverySpeed", "01-07 Jun": 0, "08-14 Jun": 0, "15-21 Jun": 100, "22-28 Jun": 20, "29 Jun-05 Jul": -50, "06-12 Jul": 0 },
+            { "Name": "FoodQuality", "01-07 Jun": 82, "08-14 Jun": 78, "15-21 Jun": 82, "22-28 Jun": 72, "29 Jun-05 Jul": 78, "06-12 Jul": 68 },
+            { "Name": "FoodQuantity", "01-07 Jun": 34, "08-14 Jun": 26, "15-21 Jun": 6, "22-28 Jun": 38, "29 Jun-05 Jul": 40, "06-12 Jul": -20 },
+            { "Name": "FoodTaste", "01-07 Jun": 82, "08-14 Jun": 48, "15-21 Jun": 52, "22-28 Jun": 42, "29 Jun-05 Jul": 46, "06-12 Jul": 86 },
+            { "Name": "Price", "01-07 Jun": -64, "08-14 Jun": -60, "15-21 Jun": -68, "22-28 Jun": -80, "29 Jun-05 Jul": -80, "06-12 Jul": 0 },
+            { "Name": "ServiceFriendliness", "01-07 Jun": 98, "08-14 Jun": 84, "15-21 Jun": 90, "22-28 Jun": 88, "29 Jun-05 Jul": 90, "06-12 Jul": 92 }
+        ];
+
+        // New Localyser Feedback Data
+        const localyserFeedbackData = [
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Downtown", "Total": 32 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Oakville", "Total": 37 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Upper James", "Total": 41 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "White Oaks", "Total": 17 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Talbot Village", "Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "MasonVille", "Total": 18 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Highbury", "Total": 46 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Oakridge", "Total": 16 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "West Five", "Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "St Thomas", "Total": 22 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Strathroy", "Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Hespeler", "Total": 57 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Windsor", "Total": 56 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Rexdale", "Total": 54 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Queen & Spadina", "Total": 27 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Bloor & Bathurst", "Total": 32 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Bloor West Village", "Total": 49 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Montpelier", "Total": 67 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Hwy #7", "Total": 28 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "St.Catharines", "Total": 39 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "McLeod", "Total": 119 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Clearbrook", "Total": 60 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Sarnia", "Total": 34 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Burlington", "Total": 42 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Head Office", "Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Lawrence", "Total": 73 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "King & John", "Total": 48 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "McMaster", "Total": 26 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Ajax", "Total": 39 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "ErinMills", "Total": 128 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Kingston", "Total": 71 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Peterborough", "Total": 44 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Waterloo", "Total": 51 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Richmond Hill", "Total": 61 },
+            { "Location Title": "Abbas Smoothies", "Location ID": "Richmond St", "Total": 1 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Woodbridge", "Total": 56 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "West hill", "Total": 36 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Dundas Square", "Total": 48 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Bramalea", "Total": 66 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Pearson Airport", "Total": 60 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Nepean", "Total": 47 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Kanata", "Total": 23 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Sudbury", "Total": 0 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Kitchener", "Total": 50 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Newmarket", "Total": 61 },
+            { "Location Title": "Shelby's Shawarma", "Location ID": "Guelph", "Total": 0 }
+        ];
+
 
         // Function to apply the new response times and rates
         function applyNewResponseMetrics() {
@@ -368,7 +500,7 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             responseRateData.forEach(location => {
-                const row = tableBody.insertRow();
+                const row = tableBody.insertRow(); // Corrected: insertRow() on tbody
                 // Using the provided "Total Reviews" from the data as the base for overall rate
                 const totalReviews = location["Total Reviews"]; 
                 
@@ -386,6 +518,10 @@
                 // Use the directly provided total response rate
                 const totalResponseRate = location["Response Rate Total"];
 
+                // Find Localyser feedback for the current location
+                const localyserData = localyserFeedbackData.find(item => item["Location ID"] === location["Location ID"]);
+                const localyserFeedback = localyserData ? localyserData.Total : 0;
+
 
                 row.insertCell().textContent = location["Location ID"];
                 row.insertCell().textContent = location["Rating"];
@@ -395,6 +531,8 @@
                 row.insertCell().textContent = location["Response Time Total"]; // Use the directly provided total response time
                 row.insertCell().textContent = `${positiveResponseRate}%`;
                 row.insertCell().textContent = `${negativeResponseRate}%`;
+                row.insertCell().textContent = localyserFeedback; // Add Localyser Feedback
+
 
                 // Add color coding for response rates
                 row.cells[4].classList.add(totalResponseRate >= 80 ? 'sentiment-positive' : (totalResponseRate >= 50 ? 'sentiment-neutral' : 'sentiment-negative'));
@@ -418,7 +556,7 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             trendChartData.forEach(trend => {
-                const row = tableBody.insertCell();
+                const row = tableBody.insertRow(); 
                 row.insertCell().textContent = trend.Name;
                 for (const key in trend) {
                     if (key !== "Name") {
@@ -437,11 +575,144 @@
             });
         }
 
+        // Function to generate actionable insights
+        function generateActionableInsights() {
+            const topPerformingContainer = document.getElementById('topPerformingLocations');
+            const highestLocalyserFeedbackContainer = document.getElementById('highestLocalyserFeedbackLocations');
+            const excellentResponseRateContainer = document.getElementById('excellentResponseRateLocations');
+            const areasForImprovementContainer = document.getElementById('areasForImprovement');
+
+            topPerformingContainer.innerHTML = ''; 
+            highestLocalyserFeedbackContainer.innerHTML = '';
+            excellentResponseRateContainer.innerHTML = '';
+            areasForImprovementContainer.innerHTML = '';
+
+            // Create a map for quick lookup of locationPerformanceData by Location ID
+            const locationPerformanceMap = new Map();
+            locationPerformanceData.forEach(loc => {
+                locationPerformanceMap.set(loc.Location, loc);
+            });
+
+            // Combine and enrich data for insights, starting with responseRateData as the base
+            const enrichedLocations = responseRateData.map(loc => {
+                const localyserData = localyserFeedbackData.find(item => item["Location ID"] === loc["Location ID"]);
+                const localyserFeedbackCount = localyserData ? localyserData.Total : 0;
+                
+                const performanceMetrics = locationPerformanceMap.get(loc["Location ID"]); // Use Location ID
+                const ratingChange = performanceMetrics ? performanceMetrics["Rating Change"] : 0; // Default to 0 if not found
+
+                return { 
+                    Location: loc["Location ID"], // Use Location ID as the primary identifier
+                    RatingChange: ratingChange,
+                    LocalyserFeedback: localyserFeedbackCount,
+                    TotalResponseRate: loc["Response Rate Total"] // This should already be updated by applyNewResponseMetrics
+                };
+            });
+
+            // Filter out locations with 0 rating, 0 reviews, 0 feedback (e.g., Head Office, Sudbury, Guelph)
+            // This prevents showing insights for locations that are not actively tracked or are new.
+            const activeLocations = enrichedLocations.filter(loc => loc.RatingChange !== 0 || loc.LocalyserFeedback > 0 || loc.TotalResponseRate > 0);
+
+
+            // --- 1. Top Performing Locations (Rating Increase) ---
+            const topPerformersRating = [...activeLocations]
+                .filter(loc => loc.RatingChange > 0)
+                .sort((a, b) => b.RatingChange - a.RatingChange)
+                .slice(0, 3); // Top 3
+
+            topPerformersRating.forEach(loc => {
+                const card = document.createElement('div');
+                card.className = 'insight-card positive';
+                card.innerHTML = `
+                    <p class="font-semibold text-lg text-green-700">🎉 ${loc.Location}</p>
+                    <p class="text-sm text-gray-600">Rating increased by <span class="font-bold">${loc.RatingChange.toFixed(1)}</span></p>
+                    <p class="text-sm text-gray-600">Localyser Feedback (June 2025): <span class="font-bold">${loc.LocalyserFeedback} reviews</span></p>
+                    <p class="text-xs mt-2 text-green-800">Analyze their strategies and share best practices!</p>
+                `;
+                topPerformingContainer.appendChild(card);
+            });
+
+            // --- 2. Highest Localyser Feedback Locations ---
+            const highestLocalyser = [...activeLocations]
+                .filter(loc => loc.LocalyserFeedback > 0)
+                .sort((a, b) => b.LocalyserFeedback - a.LocalyserFeedback)
+                .slice(0, 3); // Top 3
+
+            highestLocalyser.forEach(loc => {
+                const card = document.createElement('div');
+                card.className = 'insight-card neutral'; // Neutral as it's about engagement, not directly rating
+                card.innerHTML = `
+                    <p class="font-semibold text-lg text-blue-700">📊 ${loc.Location}</p>
+                    <p class="text-sm text-gray-600">Localyser Feedback (June 2025): <span class="font-bold">${loc.LocalyserFeedback} reviews</span></p>
+                    <p class="text-xs mt-2 text-blue-800">Leverage this direct feedback for continuous improvement and positive impact on ratings!</p>
+                `;
+                highestLocalyserFeedbackContainer.appendChild(card);
+            });
+
+            // --- 3. Excellent Response Rate Locations ---
+            const excellentResponseRate = [...activeLocations]
+                .filter(loc => loc.TotalResponseRate >= 80) // Threshold for excellent response rate
+                .sort((a, b) => b.TotalResponseRate - a.TotalResponseRate)
+                .slice(0, 3); // Top 3
+
+            excellentResponseRate.forEach(loc => {
+                const card = document.createElement('div');
+                card.className = 'insight-card positive'; // Positive as it signifies good customer service
+                card.innerHTML = `
+                    <p class="font-semibold text-lg text-green-700">✅ ${loc.Location}</p>
+                    <p class="text-sm text-gray-600">Total Response Rate (June 2025): <span class="font-bold">${loc.TotalResponseRate}%</span></p>
+                    <p class="text-sm text-gray-600">Avg. Response Time (June 2025): <span class="font-bold">${
+                        responseRateData.find(item => item["Location ID"] === loc.Location)?.["Response Time Total"] || 'N/A'
+                    } days</span></p>
+                    <p class="text-xs mt-2 text-green-800">Maintain high engagement to build customer loyalty and reputation!</p>
+                `;
+                excellentResponseRateContainer.appendChild(card);
+            });
+
+
+            // --- 4. Areas for Improvement (Rating Decrease/Low Feedback/Low Response Rate) ---
+            const areasForImprovement = [...activeLocations]
+                .filter(loc => loc.RatingChange < 0 || loc.LocalyserFeedback < 10 || loc.TotalResponseRate < 50) // Combined criteria for improvement
+                .sort((a, b) => a.RatingChange - b.RatingChange) // Sort by lowest rating change first
+                .slice(0, 3); // Bottom 3
+
+            areasForImprovement.forEach(loc => {
+                const card = document.createElement('div');
+                let cardClass = 'insight-card';
+                let recommendationText = '';
+                if (loc.RatingChange < 0) {
+                    cardClass += ' negative';
+                    recommendationText = `Address negative feedback and improve core service/delivery aspects.`;
+                } else if (loc.LocalyserFeedback < 10) {
+                    cardClass += ' neutral'; // Low feedback is neutral, but needs action
+                    recommendationText = `Actively solicit more direct customer input via Localyser to identify pain points.`;
+                } else if (loc.TotalResponseRate < 50) {
+                    cardClass += ' neutral'; // Low response rate is neutral, but needs action
+                    recommendationText = `Improve review response rate to enhance customer engagement and trust.`;
+                } else {
+                    cardClass += ' neutral'; // Fallback, though filter should catch most
+                    recommendationText = `Review performance for specific areas of concern.`;
+                }
+
+                card.className = cardClass;
+                card.innerHTML = `
+                    <p class="font-semibold text-lg ${loc.RatingChange < 0 ? 'text-red-700' : 'text-yellow-700'}">⚠️ ${loc.Location}</p>
+                    <p class="text-sm text-gray-600">Rating change (Jan - Jun 2025): <span class="font-bold">${loc.RatingChange.toFixed(1)}</span></p>
+                    <p class="text-sm text-gray-600">Localyser Feedback (June 2025): <span class="font-bold">${loc.LocalyserFeedback} reviews</span></p>
+                    <p class="text-sm text-gray-600">Total Response Rate (June 2025): <span class="font-bold">${loc.TotalResponseRate}%</span></p>
+                    <p class="text-xs mt-2 ${loc.RatingChange < 0 ? 'text-red-800' : 'text-yellow-800'}">${recommendationText}</p>
+                `;
+                areasForImprovementContainer.appendChild(card);
+            });
+        }
+
+
         // Initial population on page load
         window.onload = () => {
             applyNewResponseMetrics(); // Apply the new response times and rates first
             populateResponseRateTable();
             populateTrendChartTable();
+            generateActionableInsights(); // Generate insights after data is ready
         };
     </script>
 </body>
